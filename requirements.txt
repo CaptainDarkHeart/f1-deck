@@ -1,0 +1,7 @@
+mido>=1.3.0
+pynput>=1.7.6
+python-rtmidi>=1.5.0
+pyyaml>=6.0
+pyautogui>=0.9.54
+# Optional dependencies
+# For LED support on macOS: pip install macos-pyaudio (or use rtmidi backend)

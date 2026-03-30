@@ -1,0 +1,91 @@
+{
+  "profiles": [
+    {
+      "name": "default",
+      "mappings": [
+        {
+          "trigger": "pad",
+          "note": "pad_4_1",
+          "action": {
+            "type": "keyboard",
+            "keys": ["1"]
+          },
+          "color": [255, 0, 0]
+        },
+        {
+          "trigger": "pad",
+          "note": "pad_4_2",
+          "action": {
+            "type": "keyboard",
+            "keys": ["2"]
+          },
+          "color": [0, 255, 0]
+        },
+        {
+          "trigger": "pad",
+          "note": "pad_4_3",
+          "action": {
+            "type": "keyboard",
+            "keys": ["3"]
+          },
+          "color": [0, 0, 255]
+        },
+        {
+          "trigger": "pad",
+          "note": "pad_4_4",
+          "action": {
+            "type": "keyboard",
+            "keys": ["4"]
+          },
+          "color": [255, 255, 0]
+        },
+        {
+          "trigger": "pad",
+          "note": "pad_5_1",
+          "action": {
+            "type": "url",
+            "url": "https://github.com"
+          },
+          "color": [128, 0, 255]
+        },
+        {
+          "trigger": "fader",
+          "note": "fader_1",
+          "action": {
+            "type": "fader_callback",
+            "callback_type": "volume"
+          },
+          "color": [255, 128, 0]
+        }
+      ]
+    },
+    {
+      "name": "streaming",
+      "mappings": [
+        {
+          "trigger": "pad",
+          "note": "pad_4_1",
+          "action": {
+            "type": "hotkey",
+            "combo": ["ctrl", "shift", "m"]
+          },
+          "color": [255, 0, 0]
+        },
+        {
+          "trigger": "pad",
+          "note": "pad_4_2",
+          "action": {
+            "type": "launch",
+            "app": "OBS"
+          },
+          "color": [0, 255, 0]
+        }
+      ]
+    }
+  ],
+  "active_profile": 0,
+  "midi": {
+    "port_name": "Traktor Kontrol F1",
+    "channel": 0
+  }
+}
