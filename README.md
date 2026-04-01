@@ -30,6 +30,10 @@ F1 → USB → f1-deck → keyboard shortcuts, app launch, URLs, scripts...
 
 ```bash
 cd f1-deck
+
+# Create virtual environment and install dependencies
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 
 # List available MIDI ports
@@ -111,7 +115,7 @@ This installs `com.f1deck.app.plist` which starts f1-deck automatically on login
 launchctl list | grep f1deck     # Check status
 launchctl stop com.f1deck.app    # Stop
 launchctl start com.f1deck.app    # Start
-tail -f /tmp/f1-deck.log         # View logs
+tail -f /private/tmp/f1-deck.error.log  # View logs (macOS)
 ```
 
 **Uninstall:**
