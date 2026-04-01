@@ -157,10 +157,7 @@ class F1MidiHandler:
             if controller in self.fader_map:
                 self.callback("fader", self.fader_map[controller], value, channel)
             elif controller in self.knob_map:
-                direction = "right" if value > 63 else "left"
-                self.callback(
-                    "knob", self.knob_map[controller], direction, abs(value - 64)
-                )
+                self.callback("knob", self.knob_map[controller], value, channel)
             elif controller in self.cc_to_pad_map:
                 self.callback("pad", self.cc_to_pad_map[controller], value, channel)
             else:
