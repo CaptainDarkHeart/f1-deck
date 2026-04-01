@@ -46,6 +46,8 @@ class ActionSystem:
                 self._execute_text(action)
             elif action_type == "fader_callback":
                 self._execute_fader_callback(action, value)
+            elif action_type == "knob":
+                self._execute_knob(action, value)
             else:
                 log.warning(f"Unknown action type: {action_type}")
         except Exception as e:
@@ -147,6 +149,51 @@ class ActionSystem:
             self._set_brightness(value)
         elif callback_type == "volume":
             self._set_volume(value)
+
+    def _execute_knob(self, action: dict, direction: str = None, intensity: int = None):
+        if direction is None:
+            direction = action.get("direction", "right")
+        if intensity is None:
+            intensity = action.get("intensity", 1)
+
+        knob_action = action.get("action", "")
+
+        if knob_action == "volume":
+            if direction == "right":
+                for _ in range(intensity):
+                    self._volume_up()
+            else:
+                for _ in range(intensity):
+                    self._volume_down()
+        elif knob_action == "brightness":
+            if direction == "right":
+                self._brightness_up()
+            else:
+                self._brightness_down()
+        elif knob_action == "scroll":
+            if pyautogui:
+                if direction == "right":
+                    pyautogui.scroll(intensity)
+                else:
+                    pyautogui.scroll(-intensity)
+        elif knob_action == "arrow_left":
+            if self.keyboard:
+                self.keyboard.press("left")
+                self.keyboard.release("left")
+        elif knob_action == "arrow_right":
+            if self.keyboard:
+                self.keyboard.press("right")
+                self.keyboard.release("right")
+        elif knob_action == "arrow_up":
+            if self.keyboard:
+                self.keyboard.press("up")
+                self.keyboard.release("up")
+        elif knob_action == "arrow_down":
+            if self.keyboard:
+                self.keyboard.press("down")
+                self.keyboard.release("down")
+        else:
+            log.warning(f"Unknown knob action: {knob_action}")
 
     def _volume_up(self):
         if pyautogui:

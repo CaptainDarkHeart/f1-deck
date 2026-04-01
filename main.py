@@ -59,13 +59,20 @@ class F1Deck:
         profile = self.config_manager.get_active_profile()
 
         for mapping in profile.get("mappings", []):
-            if mapping["trigger"] == "pad_press" and mapping["note"] == note:
+            if mapping.get("trigger") == "pad_press" and mapping.get("note") == note:
                 self.action_system.execute(mapping["action"])
                 return
 
-            if mapping["trigger"] == "fader" and mapping["note"] == note:
+            if mapping.get("trigger") == "fader" and mapping.get("note") == note:
                 normalized = value / 127.0
                 self.action_system.execute(mapping["action"], value=normalized)
+                return
+
+            if mapping.get("trigger") == "knob" and mapping.get("knob") == note:
+                action = mapping["action"].copy()
+                action["direction"] = "right" if value > 63 else "left"
+                action["intensity"] = abs(value - 64)
+                self.action_system.execute(action)
                 return
 
     def stop(self):

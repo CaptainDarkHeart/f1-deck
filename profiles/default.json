@@ -56,6 +56,22 @@
             "callback_type": "volume"
           },
           "color": [255, 128, 0]
+        },
+        {
+          "trigger": "knob",
+          "knob": "knob_browse",
+          "action": {
+            "type": "knob",
+            "action": "scroll"
+          }
+        },
+        {
+          "trigger": "knob",
+          "knob": "knob_1",
+          "action": {
+            "type": "knob",
+            "action": "volume"
+          }
         }
       ]
     },
